@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Safe</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -11,6 +12,14 @@
   </head>
 
   <body>
+
+    <%= render partial: 'shared/menu' %>
+
+    <main class="container mt-3">
+      <div id='flash'>
+        <%= render 'shared/flash' %>
+      </div>
+      
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,15 @@
+<%= turbo_frame_tag @game do %>
+  
+  <%= render 'shared/errors', object: @game %>
+
+  <%= form_with model: @game do |form| %>
+    <div>
+      <%= form.label :result, "Ваш вариант" %><br>
+      <%= form.text_field :result %>
+    </div>
+    <br>
+    <div>
+      <%= form.submit 'Попробывать', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,4 @@
+<%= turbo_stream.append 'results', partial: "games/game", locals: { game: @game } %>
+<% if @game.place == 4 %>
+  <%= turbo_stream.replace Game.new, partial: "games/viktori" %>
+<% end %>
