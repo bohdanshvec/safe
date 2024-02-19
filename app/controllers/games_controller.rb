@@ -11,11 +11,12 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-    
-    # Обработка result и установка quantity и place
-    process_result(@game.result)
 
     if @game.save
+          
+      # Обработка result и установка quantity и place
+      process_result(@game.result)
+
       respond_to do |format|
         format.html do
           # flash[:success] = 'Ваш ответ принят'
