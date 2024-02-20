@@ -1,6 +1,5 @@
 class Game < ApplicationRecord
-  validates :result, presence: true, uniqueness: { message: 'You have already entered this result' }, 
-  format: { with: /\A\d{4,}\z/, message: "only numbers" }, length: { is: 4 }
+  validates :result, presence: true, uniqueness: { message: 'You have already entered this result' }, format: { with: /\A\d{4,}\z/, message: "only numbers" }, length: { is: 4 }
 
   validate :unique_digits
 

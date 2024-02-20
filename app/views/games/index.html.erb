@@ -1,14 +1,20 @@
 <h1>Game Safe   V 1.1</h1>
 
-<div>
-  <%= link_to 'Новая игра', start_game_path, class: "btn btn-primary" %>
-<div>
+<button class="btn btn-info m-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Правила гри:
+</button>
 
-<h3>Правила:</h3>
-<p>Загадан код из четырёх цифр (цифры не повторяются 0 1 2 3 4 5 6 7 8 9). Отгадайте данный код. Вводя ваш вариант вы будете получать ответ: количество угаданых цифр и сколько из них стоять на своих местах.</p>
-<p>!!! В одном ответе не повторяйте цыфры, в загаданном коде не бывает двух 11 или нескольких 333, только по одной цыфре, код из четырёх</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <p>Загадан код з чотирьох цифр (цифри не повторяються 0 1 2 3 4 5 6 7 8 9). Відгадайте загаданий код. Вводячи МІЙ ВАРИАНТ вы будете отримувати відповідь: кількість вгаданих цифр та скільки з них стоять на своїх місях.</p>
+
+    <p>!!! В одній відповіді не повторюйте цифри, в загаданом коді не бувае двох 11 або декількох 333, тільки по одній цифрі, код з чотирьох</p>
+  </div>
+</div>
 
 <div class='my=1'>X X X X</div>
+
+<div class='my=1'><%= cookies[:code].gsub(/[\s,]/, '') %></div>
 
 <div>
   <%= turbo_frame_tag id='results' do %>
@@ -20,7 +26,7 @@
   <%= turbo_frame_tag Game.new do %>
 
     <div class='my-3'>
-      <%= link_to "Мой вариант", new_game_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Game.new) }  %>
+      <%= link_to "Мій вариант", new_game_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Game.new) }  %>
     </div>
   <% end %>
 </div>
