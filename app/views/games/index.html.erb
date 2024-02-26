@@ -14,8 +14,9 @@
 
 <div class='my=1'>X X X X</div>
 
-<div class='my=1'><%= cookies[:code].gsub(/[\s,]/, '') %></div>
+<div class='my=1'><%= session[:combination] %></div>
 
+<% if session[:combination] %>
 <div>
   <%= turbo_frame_tag id='results' do %>
     <%= render @games %>
@@ -30,5 +31,6 @@
     </div>
   <% end %>
 </div>
+<% end %>
 
 

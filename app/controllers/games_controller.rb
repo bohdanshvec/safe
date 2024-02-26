@@ -33,16 +33,12 @@ class GamesController < ApplicationController
   end
 
   def start_game
-    # Очистить куки
-    cookies.delete(:code)
-
     # Очистить таблицу Game
     Game.delete_all
 
-    # Создать новую комбинацию и сохранить в куки
-    combination = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].shuffle.pop(4)
-    cookies[:code] = combination.join(", ")
-
+    # Создать новую комбинацию и сохранить в сессию
+    @combination = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].shuffle.pop(4).join(", ")
+    session[:combination] = @combination
     redirect_to root_path
   end
 
@@ -56,6 +52,5 @@ class GamesController < ApplicationController
     @game.quantity = calculate_quantity(result)
     @game.place = calculate_place(result)
   end
-
 
 end
