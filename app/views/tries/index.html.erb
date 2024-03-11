@@ -14,20 +14,20 @@
 
 <div class='my=1'>X X X X</div>
 
-<div class='my=1'><%#= session[:combination] %></div>
+<div class='my=1'><%= session[:combination] %></div>
 
 <% if session[:combination] %>
 <div>
   <%= turbo_frame_tag id='results' do %>
-    <%= render @games %>
+    <%= render @tries %>
   <% end %>
 </div>
 
 <div class='my-3'>
-  <%= turbo_frame_tag Game.new do %>
+  <%= turbo_frame_tag Try.new do %>
 
     <div class='my-3'>
-      <%= link_to "Мій вариант", new_game_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Game.new) }  %>
+      <%= link_to "Мій вариант", new_try_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Try.new) }  %>
     </div>
   <% end %>
 </div>

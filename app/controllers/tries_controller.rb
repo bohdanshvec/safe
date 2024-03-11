@@ -1,21 +1,21 @@
-class GamesController < ApplicationController
+class TriesController < ApplicationController
   include Treatment
   
   def index
-    @games = Game.all
+    @tries = Try.all
   end
 
   def new
-    @game = Game.new
+    @try = Try.new
   end
 
   def create
-    @game = Game.new(game_params)
+    @try = Try.new(try_params)
 
-    if @game.save
+    if @try.save
           
       # Обработка result и установка quantity и place
-      process_result(@game.result)
+      process_result(@try.result)
 
       respond_to do |format|
         format.html do
@@ -34,7 +34,7 @@ class GamesController < ApplicationController
 
   def start_game
     # Очистить таблицу Game
-    Game.delete_all
+    Try.delete_all
 
     # Создать новую комбинацию и сохранить в сессию
     @combination = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].shuffle.pop(4).join(", ")
@@ -44,13 +44,13 @@ class GamesController < ApplicationController
 
   private
 
-  def game_params
-    params.require(:game).permit(:result)
+  def try_params
+    params.require(:try).permit(:result)
   end
 
   def process_result(result)
-    @game.quantity = calculate_quantity(result)
-    @game.place = calculate_place(result)
+    @try.quantity = calculate_quantity(result)
+    @try.place = calculate_place(result)
   end
 
 end

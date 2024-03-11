@@ -1,8 +1,8 @@
-<%= turbo_frame_tag @game do %>
+<%= turbo_frame_tag @try do %>
   
-  <%= render 'shared/errors', object: @game %>
+  <%= render 'shared/errors', object: @try %>
 
-  <%= form_with model: @game do |form| %>
+  <%= form_with model: @try do |form| %>
     <div>
       <%= form.label :result, "Ваш варіант" %><br>
       <%= form.text_field :result %>
