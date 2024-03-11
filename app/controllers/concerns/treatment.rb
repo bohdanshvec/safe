@@ -8,7 +8,7 @@ module Treatment
 
     def calculate_quantity(result)
 
-      code = session[:combination].gsub(/[\s,]/, '')
+      code = @code.code.gsub(/[\s,]/, '')
       index = 0
       quantity = 0
   
@@ -23,7 +23,7 @@ module Treatment
     end
   
     def calculate_place(result)
-      code = session[:combination].gsub(/[\s,]/, '')
+      code = @code.code.gsub(/[\s,]/, '')
       reconciliation_index = 0
       place = 0
   

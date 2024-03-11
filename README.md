@@ -8,7 +8,8 @@
 * Код приховано в сесії а не в куки
 
 ### Changes in version 2.0
---- змінив модель Game на Try(Tries)
-* Додано модель 
+* Змінено модель Game на Try(Tries), belongs_to :code
+* Додано модель Code, has_many :tries
+
 
 

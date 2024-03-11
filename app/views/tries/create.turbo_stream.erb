@@ -1,6 +1,6 @@
 <%= turbo_stream.append 'results', partial: "tries/try", locals: { try: @try } %>
 <% if @try.place == 4 %>
-  <%= turbo_stream.replace Try.new, partial: "tries/viktori" %>
+  <%= turbo_stream.replace Try.new, partial: "tries/viktori", locals: { try_viktory: Try.where(code_id: @code).count } %>
 <% elsif Try.count == 40 %>
   <%= turbo_stream.replace Try.new, partial: "tries/losing" %>
 <% end %>
