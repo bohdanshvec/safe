@@ -10,6 +10,9 @@
 ### Changes in version 2.0
 * Змінено модель Game на Try(Tries), belongs_to :code
 * Додано модель Code, has_many :tries
+* current_code - код від сейфу, Code.id в сесії (в одному браузері 
+  два вікна будуть мати один current_code, який останнім утвореться
+  після натискання NEW GAME)
 
 
 

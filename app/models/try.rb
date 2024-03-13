@@ -1,9 +1,11 @@
 class Try < ApplicationRecord
   belongs_to :code
 
-  # validates :result, presence: true, uniqueness: { message: 'You have already entered this result' }, format: { with: /\A\d{4,}\z/, message: "only numbers" }, length: { is: 4 }
+  validates :result, presence: true, format: { with: /\A\d{4,}\z/, message: "only numbers" }, length: { is: 4 }
 
-  # validate :unique_digits
+  validate :unique_digits
+
+  validates :result, uniqueness: { scope: :code_id, message: 'You have already entered this result' }
 
   private
 

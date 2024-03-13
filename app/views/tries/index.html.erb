@@ -14,8 +14,8 @@
 
 <div class='my=1'>X X X X</div>
 
-<% if session[:combination] %>
-  <div class='my=1'><%= @code_show %></div>
+<% if current_code %>
+  <div class='my=1'><%= current_code.code %></div>
 
   <div>
     <%= turbo_frame_tag id='results' do %>
