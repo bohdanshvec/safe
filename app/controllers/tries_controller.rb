@@ -14,18 +14,22 @@ class TriesController < ApplicationController
     @try = @code.tries.new(try_params)
 
     if @try.save
-      
+
       @try.quantity = calculate_quantity(@try.result)
       @try.place = calculate_place(@try.result)
+      change_status_code if @try.quantity == 4
 
-      respond_to do |format|
-        format.html do
-          # flash[:success] = 'Ваш ответ принят'
-          redirect_to root_path
-        end
+      if @try.save
 
-        format.turbo_stream do
-          # flash.now[:success] = 'Ваш ответ принят'
+        respond_to do |format|
+          format.html do
+            # flash[:success] = 'Ваш ответ принят'
+            redirect_to root_path
+          end
+
+          format.turbo_stream do
+            # flash.now[:success] = 'Ваш ответ принят'
+          end
         end
       end
     else

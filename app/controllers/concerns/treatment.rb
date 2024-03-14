@@ -6,6 +6,11 @@ module Treatment
 
     private
 
+    def change_status_code
+      @code.status = 1
+      @code.save
+    end
+
     def calculate_quantity(result)
 
       code = @code.code.gsub(/[\s,]/, '')
