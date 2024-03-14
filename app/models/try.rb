@@ -1,7 +1,9 @@
 class Try < ApplicationRecord
   belongs_to :code
 
-  validates :result, presence: true, format: { with: /\A\d{4,}\z/, message: "only numbers" }, length: { is: 4 }
+  validates :result, presence: true, format: { with: /\A\d{4,}\z/, message: "only numbers" }
+  
+  validates :result, length: { is: 4 }
 
   validate :unique_digits
 

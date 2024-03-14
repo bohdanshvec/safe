@@ -1,6 +1,8 @@
 <%= turbo_frame_tag @try do %>
-  
-  <%= render 'shared/errors', object: @try %>
+
+  <%= turbo_frame_tag id='errors' do %>
+    <%= render 'shared/errors', object: @try %>
+  <% end %>
 
   <%= form_with model: @try do |form| %>
     <div>
@@ -12,4 +14,5 @@
       <%= form.submit 'Спробувати', class: "btn btn-primary" %>
     </div>
   <% end %>
+
 <% end %>
