@@ -14,6 +14,9 @@ class TriesController < ApplicationController
     @try = @code.tries.new(try_params)
 
     if @try.save
+      
+      @try.quantity = calculate_quantity(@try.result)
+      @try.place = calculate_place(@try.result)
 
       respond_to do |format|
         format.html do
@@ -40,9 +43,7 @@ class TriesController < ApplicationController
   private
 
   def try_params
-    params[:try][:quantity] = calculate_quantity(params[:try][:result])
-    params[:try][:place] = calculate_place(params[:try][:result])
-    params.require(:try).permit(:result, :quantity, :place)
+    params.require(:try).permit(:result)
   end
 
 end
