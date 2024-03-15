@@ -15,7 +15,8 @@
   після натискання NEW GAME)
 * Тінь курсора на NEW GAME, сірий
 * Сповіщення про помилки у фреймі errors, replace
-* До Code додано status: { not_over = 0, over = 1 } 
+* До Code додано status: { not_over = 0, over = 1 }
+* Змінено модель Code with Game 
 
   В наступних версіях:
   - Додати користувачів

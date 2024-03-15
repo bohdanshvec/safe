@@ -2,7 +2,7 @@ class TriesController < ApplicationController
   include Treatment
 
   def index
-    @tries = Try.where(code_id: current_code.id) if current_code
+    @tries = Try.where(game_id: current_code.id) if current_code
   end
 
   def new
@@ -38,7 +38,7 @@ class TriesController < ApplicationController
   end
 
   def start_game
-    @code = Code.create(code:(0..9).to_a.shuffle.pop(4).join(", "))
+    @code = Game.create(code:(0..9).to_a.shuffle.pop(4).join(", "))
     session[:current_code] = @code.id
 
     redirect_to root_path

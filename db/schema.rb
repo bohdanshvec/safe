@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_14_151116) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_15_075155) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "codes", force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0, null: false
-    t.index ["status"], name: "index_codes_on_status"
+    t.index ["status"], name: "index_games_on_status"
   end
 
   create_table "tries", force: :cascade do |t|
@@ -28,9 +28,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_14_151116) do
     t.integer "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "code_id", null: false
-    t.index ["code_id"], name: "index_tries_on_code_id"
+    t.bigint "game_id", null: false
+    t.index ["game_id"], name: "index_tries_on_game_id"
   end
 
-  add_foreign_key "tries", "codes"
+  add_foreign_key "tries", "games"
 end

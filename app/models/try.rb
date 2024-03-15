@@ -1,11 +1,11 @@
 class Try < ApplicationRecord
-  belongs_to :code
+  belongs_to :game
 
   validates :result, presence: true, format: { with: /\A\d{4,}\z/, message: "only numbers" }, length: { is: 4 }
   
   validate :unique_digits
 
-  validates :result, uniqueness: { scope: :code_id, message: 'You have already entered this result' }
+  validates :result, uniqueness: { scope: :game_id, message: 'You have already entered this result' }
 
   private
 
