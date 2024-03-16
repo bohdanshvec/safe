@@ -15,7 +15,7 @@
 <div class='my=1'>X X X X</div>
 
 <% if current_code %>
-  <div class='my=1'><%= current_code.code%> ----- id: (<%= current_code.id %>)</div>
+  <div class='my=1'><%#= @current_code.code %> <%#= @current_code.id %></div>
 
   <div>
     <%= turbo_frame_tag id='results' do %>
