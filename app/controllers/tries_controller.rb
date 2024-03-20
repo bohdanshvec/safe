@@ -2,7 +2,7 @@ class TriesController < ApplicationController
   include Treatment
 
   def index
-    @tries = Try.where(game_id: current_code.id) if current_code
+    @tries = Try.where(game_id: current_code.id) if current_code.present?
   end
 
   def new
@@ -17,7 +17,7 @@ class TriesController < ApplicationController
 
       @try.quantity = calculate_quantity(@try.result)
       @try.place = calculate_place(@try.result)
-      change_status_code if @try.quantity == 4
+      change_status_code if @try.place == 4
 
       if @try.save
 

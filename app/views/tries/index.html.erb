@@ -1,4 +1,4 @@
-<h1>Game Safe   V User</h1>
+<h1>Game Safe   V.User</h1>
 
 <button class="btn btn-info m-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   Правила гри:
@@ -14,8 +14,8 @@
 
 <div class='my=1'>X X X X</div>
 
-<% if current_code %>
-  <div class='my=1'><%#= @current_code.code %> <%#= @current_code.id %></div>
+<% if current_code.present? %>
+  <div class='my=1'><%= @current_code.code %> -----id: (<%= @current_code.id %>)</div>
 
   <div>
     <%= turbo_frame_tag id='results' do %>
