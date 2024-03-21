@@ -9,6 +9,7 @@ module Treatment
     def change_status_code
       @code.status = 1
       @code.save
+      session[:current_code] = nil
     end
 
     def calculate_quantity(result)
