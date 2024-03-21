@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :games
+  
   attr_accessor :old_password
 
   has_secure_password validations: false

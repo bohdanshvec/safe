@@ -1,4 +1,5 @@
 class Game < ApplicationRecord
-  enum status: { not_over: 0, over: 1 }
+  enum status: { in_progress: 0, completed: 1 }
   has_many :tries
+  belongs_to :user, optional: true
 end

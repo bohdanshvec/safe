@@ -38,9 +38,11 @@ class TriesController < ApplicationController
   end
 
   def start_game
-    @code = Game.create(code:(0..9).to_a.shuffle.pop(4).join(", "))
-    session[:current_code] = @code.id
+    code_game = (0..9).to_a.shuffle.pop(4).join(", ")
 
+    current_user.present? ? @code = current_user.games.create(code: code_game) : @code = Game.create(code: code_game)
+    
+    session[:current_code] = @code.id
     redirect_to root_path
   end
 
