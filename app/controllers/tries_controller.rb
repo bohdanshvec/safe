@@ -2,7 +2,12 @@ class TriesController < ApplicationController
   include Treatment
 
   def index
-    @tries = Try.where(game_id: current_code.id) if current_code.present?
+    if params[:game_id].present?
+      current_session_game(params[:game_id])
+      @tries = Try.where(game_id: params[:game_id])
+    elsif current_game.present?
+      @tries = Try.where(game_id: current_game.id)
+    end
   end
 
   def new
@@ -10,7 +15,7 @@ class TriesController < ApplicationController
   end
 
   def create
-    @code = current_code
+    @code = current_game
     @try = @code.tries.new(try_params)
 
     if @try.save
@@ -42,8 +47,7 @@ class TriesController < ApplicationController
 
     current_user.present? ? @game = current_user.games.create(code: code_game) : @game = Game.create(code: code_game)
     
-    current_session_game(@game)
-    # session[:current_code] = @code.id
+    current_session_game(@game.id)
     redirect_to root_path
   end
 

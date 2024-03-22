@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col">
+    <h2>UNFINISHED GAMES</h2>
+
+    <% @games_unfinished.each do |game| %>
+      <section class="card-text">
+        <% if game.tries.count == 0 %> 
+          Гру почато, але не введено жодної спроби<br>
+        <% end %>
+        <% game.tries.each do |try| %>
+          <%= try_text(try) %><br>
+        <% end %>
+        <%= link_to 'Продовжити гру', root_path(game_id: game.id), class: "btn btn-primary" %>
+      </section>
+      <br>
+    <% end %>
+  </div>
+  <div class="col">
+    <%= render 'all_statistics' %>
+  </div>
+</div>
+
+

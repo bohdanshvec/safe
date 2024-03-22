@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   
   include Authentication
-  include CurrentCode
+  include CurrentGame
 
 end

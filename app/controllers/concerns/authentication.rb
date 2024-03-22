@@ -35,7 +35,7 @@ module Authentication
 
     def sing_out
       session.delete(:user_id)
-      session.delete(:current_code)
+      session.delete(:current_game_id)
     end
 
     def require_no_authentication

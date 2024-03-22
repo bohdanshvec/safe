@@ -1,6 +1,6 @@
 module TriesHelper
   def try_text(try)
-    "#{ try.result } ви вгадали #{ try.quantity } #{ try.quantity == 1 ? 'цифру' : 'цифри' } з них #{ try.place } #{ try.place == 1 ? 'на своєму місці' : 'на своїх місцях'}"
+    "#{ try.result } - ви вгадали #{ try.quantity } #{ try.quantity == 1 ? 'цифру' : 'цифри' } з них #{ try.place } #{ try.place == 1 ? 'на своєму місці' : 'на своїх місцях'}"
   end
 
   def victory_text(try_vikrory)

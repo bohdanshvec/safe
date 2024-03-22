@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :create, :edit, :update] do
+    collection do
+      get 'unfinished_games'
+      get 'finished_games'
+    end
+  end
 
   resources :tries, only: [:index, :new, :create]
 

@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       sign_in(user)
       remember(user) if params[:remember_me] == '1'
+      session.delete(:current_game_id)
       redirect_to root_path
     else
       flash.now[:warning] = "Incorrect email and/or password"
