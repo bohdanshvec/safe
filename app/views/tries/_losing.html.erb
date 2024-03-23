@@ -1,3 +1,3 @@
-<h2>Ви ПРОГРАЛИ, THE END !!!</h2>
+<h2><%= t('global.losing.losing') %></h2>
 <br>
-<h3>Ви намагалися <%= Try.count %> разів, але так і не розгадали код.</h3>
+<h3><%= t('global.losing.you_tried') %><%= Try.where(game_id: @code).count %><%= t('global.losing.you_tried_1') %></h3>

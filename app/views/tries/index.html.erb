@@ -1,14 +1,14 @@
-<h1>Game Safe   V.User</h1>
+<h1><%= t('.game_safe') %></h1>
 
 <button class="btn btn-info m-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Правила гри:
+  <%= t('.rules_game') %>
 </button>
 
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
-    <p>Загадан код з чотирьох цифр (цифри не повторяються 0 1 2 3 4 5 6 7 8 9). Відгадайте загаданий код. Вводячи МІЙ ВАРИАНТ вы будете отримувати відповідь: кількість вгаданих цифр та скільки з них стоять на своїх місях.</p>
+    <p><%= t('.rules_ap') %></p>
 
-    <p>!!! В одній відповіді не повторюйте цифри, в загаданом коді не бувае двох 11 або декількох 333, тільки по одній цифрі, код з чотирьох</p>
+    <p><%= t('.rules_bp') %></p>
   </div>
 </div>
 
@@ -30,7 +30,7 @@
 
         <%= turbo_frame_tag Try.new do %>
           <div class='my-3'>
-            <%= link_to "Мій вариант", new_try_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Try.new) }  %>
+            <%= link_to t('.my_variant'), new_try_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Try.new) }  %>
           </div>
         <% end %>
         

@@ -6,12 +6,12 @@
 
   <%= form_with model: @try do |form| %>
     <div>
-      <%= form.label :result, "Ваш варіант" %><br>
+      <%= form.label :result, t('.my_variant') %><br>
       <%= form.text_field :result, autofocus: true %>
     </div>
     <br>
     <div>
-      <%= form.submit 'Спробувати', class: "btn btn-primary" %>
+      <%= form.submit t('.try'), class: "btn btn-primary" %>
     </div>
   <% end %>
 

@@ -1,0 +1,73 @@
+uk:
+  menu:
+    home: 'ГОЛОВНА'
+    new_game: 'НОВА ГРА'
+    unfinished_game: 'НЕЗАКІНЧЕНІ ІГРИ'
+    finished_game: 'ЗАКІНЧЕНІ ІГРИ'
+    edit_profile: 'Змінити профіль'
+    log_out: 'Вийти'
+    sign_up: 'Зареєструватися'
+    log_in: 'Увійти'
+
+  tries:
+    index:
+      game_safe: 'Гра Сейф'
+      rules_game: 'Правила гри'
+      rules_ap: >
+        Загадан код з чотирьох цифр (цифри не повторяються 0  1 2 3 4 5 6 7 8 9). Відгадайте загаданий код. Вводячи МІЙ ВАРИАНТ вы будете отримувати відповідь: - кількість вгаданих цифр та скільки з них стоять на своїх місях.
+      rules_bp: >
+        !!! В одній відповіді не повторюйте цифри, в загаданом коді не бувае двох 11 або декількох 333, тільки по одній цифрі, код з чотирьох
+      my_variant: 'Мій варіант:'
+    new:
+      try: 'Спробувати'
+      my_variant: 'Мій варіант'
+
+  sessions:
+    new:
+      sign_in: 'Увійти!'
+      authorization: 'Авторизуватися'
+
+  users:
+    new:
+      registration: 'Реестрація'
+    edit:
+      edit_data_user: 'Змінити данні Користовача'
+    unfinished_games:
+      unfinished_games: 'НЕЗАКІНЧЕНІ ІГРИ :'
+      text: 'Гру розпочато, але не введено жодного варіанту'
+      continue_game: 'Продовжити гру'
+    finished_games:
+      finished_games: 'ЗАКІНЧЕНІ ІГРИ :'
+      code: 'КОД'
+
+  global:
+    form:
+      register: 'Зареєструватися!'
+      save: 'Зберегти!'
+    statistics:
+      all_statistics: 'УСЯ СТАТИСТИКА :'
+      total_games_played: 'зіграно всього ігор'
+      finished_games: 'закінчених ігор'
+      up_to_5_tries: 'до 5 спроб включно'
+      6_7_tries: '6-7 спроб'
+      8_10_tries: '8-10 спроб'
+      more_than_10_tries: 'більше ніж 10 спроб'
+      unfinished_games: 'незакінчених ігор'
+    text:
+      you_guessed: 'ви вгадали'
+      number: 'цифру'
+      numbers: 'цифри'
+      of_them: 'з них'
+      in_its_place: 'на своєму місці'
+      in_their_places: 'на своїх місцях'
+    losing:
+      losing: 'ВИ ПРОГРАЛИ! ГРУ ЗАКІНЧЕНО !!!'
+      you_tried: 'Ви намагалися '
+      you_tried_1: ' разів, але так і не розгадали код.'
+    viktory:
+      viktory: 'Ви вгадали код, ПЕРЕМОГА !!!'
+      attempt_1: 'спроба'
+      attempt_2: 'спроби'
+      attempt_10: 'спроб'
+      you_needed_1: 'Вам знадобилася'
+      you_needed_2: 'Вам знадобилося'

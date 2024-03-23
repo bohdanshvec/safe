@@ -1,31 +1,73 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  menu:
+    home: 'HOME'
+    new_game: 'NEW GAME'
+    unfinished_game: 'UNFINISHED GAMES'
+    finished_game: 'FINISHED GAMES'
+    edit_profile: 'Edit profile'
+    log_out: 'Log Out'
+    sign_up: 'Sign Up'
+    log_in: 'Log In'
+
+  tries:
+    index:
+      game_safe: 'Game Safe'
+      rules_game: 'Rules game'
+      rules_ap: >
+        The code is a four-digit number (digits do not repeat 0 1 2 3 4 5 6 7 8 9). Guess the secret code. By entering MY VARIANT you will receive the answer - the number of guessed digits and how many of them are in their places.
+      rules_bp: >
+        !!! Do not repeat digits in one answer, in the secret code there are no two 1's or several 333's, only one digit per position, a four-digit code.
+      my_variant: 'My variant'
+    new:
+      try: 'Try'
+      my_variant: 'My variant'
+
+  sessions:
+    new:
+      sign_in: 'Sign In!'
+      authorization: 'Authorization'
+
+  users:
+    new:
+      registration: 'Registration'
+    edit:
+      edit_data_user: 'Edit data User'
+    unfinished_games:
+      unfinished_games: 'UNFINISHED GAMES :'
+      text: 'The game has started, but no variants have been entered'
+      continue_game: 'Continue  game'
+    finished_games:
+      finished_games: 'FINISHED GAMES :'
+      code: 'CODE'
+
+  global:
+    form:
+      register: 'Register!'
+      save: 'Save!'
+    statistics:
+      all_statistics: 'ALL STATISTICS :'
+      total_games_played: 'total games played'
+      finished_games: 'finished games'
+      up_to_5_tries: 'up to 5 tries inclusive'
+      6_7_tries: '6-7 tries'
+      8_10_tries: '8-10 tries'
+      more_than_10_tries: 'more than 10 tries'
+      unfinished_games: 'unfinished games'
+    text:
+      you_guessed: 'you guessed'
+      number: 'number'
+      numbers: 'numbers'
+      of_them: 'of them' 
+      in_its_place: 'in its place'
+      in_their_places: 'in their places'
+    losing:
+      losing: 'YOU LOSE! THE END !!!'
+      you_tried: 'You tried '
+      you_tried_1: ' items, but still haven’t cracked the code.'
+    viktory:
+      viktory: 'You guessed the code. Victory !!!'
+      attempt_1: 'attempt'
+      attempt_2: 'attempts'
+      attempt_10: 'attempts'
+      you_needed_1: 'You needed'
+      you_needed_2: 'You needed'

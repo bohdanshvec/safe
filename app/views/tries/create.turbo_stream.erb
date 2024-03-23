@@ -1,8 +1,8 @@
 <%= turbo_stream.append 'results', partial: "tries/try", locals: { try: @try } %>
 <%= turbo_stream.replace 'errors', partial: "shared/errors", locals: { object: @try } %>
 <% if @try.place == 4 %>
-  <%= turbo_stream.replace Try.new, partial: "tries/viktori", locals: { try_viktory: Try.where(game_id: @code).count } %>
+  <%= turbo_stream.replace Try.new, partial: "tries/viktory", locals: { try_viktory: Try.where(game_id: @code).count } %>
   <%= turbo_stream.replace 'images', partial: "tries/safe_open" %>
-<% elsif Try.count == 40 %>
+<% elsif Try.where(game_id: @code).count >= 30 %>
   <%= turbo_stream.replace Try.new, partial: "tries/losing" %>
 <% end %>

@@ -23,6 +23,7 @@ class TriesController < ApplicationController
       @try.quantity = calculate_quantity(@try.result)
       @try.place = calculate_place(@try.result)
       change_status_code if @try.place == 4
+      session.delete(:current_game_id) if Try.where(game_id: @code).count >= 30
 
       if @try.save
 

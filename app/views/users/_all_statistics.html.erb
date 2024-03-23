@@ -1,11 +1,11 @@
-<h2>ALL STATISTICS</h2>
+<h2><%= t('global.statistics.all_statistics') %></h2>
 
-<span style='color: blue'><%= @all_games %></span> - зіграно всього ігор<br>
+<span style='color: blue'><%= @all_games %></span> - <%= t('global.statistics.total_games_played')%><br>
 <br>
-<span style='color: green'><%= @finished_games %></span> - закінчених ігор :<br>
-<%= @up_to_5_tries_games %> - до 5 спроб включно<br>
-<%= @to_6_7_tries_games %> - 6-7 спроб<br>
-<%= @to_8_10_tries_games %> - 8-10 спроб<br>
-<%= @more_than_10_tries_games %> - більше 10 спроб<br>
+<span style='color: green'><%= @finished_games %></span> - <%= t('global.statistics.finished_games') %> :<br>
+<%= @up_to_5_tries_games %> - <%= t('global.statistics.up_to_5_tries') %><br>
+<%= @to_6_7_tries_games %> - <%= t('global.statistics.6_7_tries') %><br>
+<%= @to_8_10_tries_games %> - <%= t('global.statistics.8_10_tries') %><br>
+<%= @more_than_10_tries_games %> - <%= t('global.statistics.more_than_10_tries') %><br>
 <br>
-<span style='color: red'><%= @unfinished_games %></span> - незакінчених ігор
+<span style='color: red'><%= @unfinished_games %></span> - <%= t('global.statistics.unfinished_games') %>

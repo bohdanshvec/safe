@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col">
-    <h2>FINISHED GAMES</h2>
+  <div class="col-md-7">
+    <h2><%= t('.finished_games') %></h2>
 
     <% @games_finished.each do |game| %>
       <section class="card-text">
-        <h5 style='color: blue'><%= game.code.gsub(/[\s,]/, '') %> : CODE</h5>
+        <h5 style='color: blue'><%= game.code.gsub(/[\s,]/, '') %> : <%= t('.code') %></h5>
 
         <% game.tries.each do |try| %>
           <%= try_text(try) %><br>
@@ -15,7 +15,7 @@
       <br>
     <% end %>
   </div>
-  <div class="col">
+  <div class="col-md-5">
     <%= render 'all_statistics' %>
   </div>
 </div>
