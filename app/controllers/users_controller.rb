@@ -21,11 +21,11 @@ class UsersController < ApplicationController
   end
 
   def unfinished_games
-    @games_unfinished = current_user.games.where(status: 0)
+    @games_unfinished = current_user.games.where(status: 0).order updated_at: :desc
   end
 
   def finished_games
-    @games_finished = current_user.games.where(status: 1)
+    @games_finished = current_user.games.where(status: 1).order updated_at: :desc
   end
 
   def edit
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = 'Your profile was successfully updated!'
+      flash[:success] = t('.success')
       redirect_to edit_user_path
     else      
       render :edit, status: :unprocessable_entity

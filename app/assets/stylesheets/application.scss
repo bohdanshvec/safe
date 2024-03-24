@@ -28,3 +28,28 @@
 .nav-link:hover {
   color: grey !important;
 }
+
+.flag {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url('/assets/flags_ua.png') no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+
+.uk-flag {
+  background-position: -1px -0px;
+
+}
+.en-flag {
+  background-position: -1px -17px;
+}
+
+.nav {
+  .flag {
+    position: relative;
+    top: 2px;
+  }
+}

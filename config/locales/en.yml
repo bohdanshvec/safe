@@ -1,4 +1,17 @@
 en:
+  en: English
+  uk: Ukrainian
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        name: Name
+        old_password: Old password
+        password: Password
+        password_confirmation: Password confirmation
+      try:
+        result: 'Variant'
+
   menu:
     home: 'HOME'
     new_game: 'NEW GAME'
@@ -26,12 +39,19 @@ en:
     new:
       sign_in: 'Sign In!'
       authorization: 'Authorization'
+      email: Email
+      password: Password
+      remember_me: 'remember me'
+    create:
+      warning: 'Incorrect email and/or password'
 
   users:
     new:
       registration: 'Registration'
     edit:
       edit_data_user: 'Edit data User'
+    update:
+      success: 'Your profile was successfully updated!'
     unfinished_games:
       unfinished_games: 'UNFINISHED GAMES :'
       text: 'The game has started, but no variants have been entered'
@@ -71,3 +91,10 @@ en:
       attempt_10: 'attempts'
       you_needed_1: 'You needed'
       you_needed_2: 'You needed'
+    errors:
+      only_numbers: must contain only numbers
+      digits_unique: 'Digits must be unique'
+      entered: 'You have already entered this combination'
+      is_incorrect: 'is incorrect'
+
+

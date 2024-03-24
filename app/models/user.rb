@@ -48,7 +48,7 @@ class User < ApplicationRecord
   def correct_old_password
     return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
 
-    errors.add :old_password, 'is incorrect'
+    errors.add :old_password, I18n.t('global.errors.is_incorrect')
   end
 
   def password_presence

@@ -1,10 +1,12 @@
+<% currently_at(t('menu.log_in')) %>
+
 <h1 class="bm-4"><%= t('.authorization')%></h1>
 
 <%= form_with url: session_path do |f| %>
 
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
-      <%= f.label :email %>
+      <%= f.label t('.email') %>
     </div>
 
     <div class="col-sm-10">
@@ -14,7 +16,7 @@
 
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
-      <%= f.label :password %>
+      <%= f.label t('.password') %>
     </div>
 
     <div class="col-sm-10">
@@ -27,7 +29,7 @@
     <div class="col-sm-10">
       <div class='form-check'>
         <%= f.check_box :remember_me, class: 'form-check-input', value: '1' %>
-        <%= f.label :remember_me, class: 'form-check-label' %>
+        <%= f.label t('.remember_me'), class: 'form-check-label' %>
       </div>
     </div>
   </div>

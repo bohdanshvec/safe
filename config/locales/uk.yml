@@ -1,4 +1,18 @@
 uk:
+  en: Англійська
+  uk: Українська
+
+  activerecord:
+    attributes:
+      user:
+        email: Пошта
+        name: Ім'я
+        old_password: Старий пароль
+        password: Пароль
+        password_confirmation: Підтвердження пароля
+      try:
+        result: 'Варіант'
+              
   menu:
     home: 'ГОЛОВНА'
     new_game: 'НОВА ГРА'
@@ -26,12 +40,19 @@ uk:
     new:
       sign_in: 'Увійти!'
       authorization: 'Авторизуватися'
+      email: Пошта
+      password: Пароль
+      remember_me: запам'ятай мене
+    create:
+      warning: 'Некоректна пошта та/або пароль!'
 
   users:
     new:
-      registration: 'Реестрація'
+      registration: 'Реєстрація'
     edit:
       edit_data_user: 'Змінити данні Користовача'
+    update:
+      success: 'Ваш профіль було вдало змінено!'
     unfinished_games:
       unfinished_games: 'НЕЗАКІНЧЕНІ ІГРИ :'
       text: 'Гру розпочато, але не введено жодного варіанту'
@@ -71,3 +92,9 @@ uk:
       attempt_10: 'спроб'
       you_needed_1: 'Вам знадобилася'
       you_needed_2: 'Вам знадобилося'
+    errors:
+      only_numbers: повинен містити лише цифри
+      digits_unique: 'Цифри не повинні повторюватися'
+      entered: 'Ви вже вводили таку комбінацію'
+      is_incorrect: 'не коректний'
+

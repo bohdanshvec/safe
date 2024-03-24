@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session.delete(:current_game_id)
       redirect_to root_path
     else
-      flash.now[:warning] = "Incorrect email and/or password"
+      flash.now[:warning] = t('.warning')
       render :new, status: :unprocessable_entity
     end
   end
