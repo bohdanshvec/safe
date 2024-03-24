@@ -20,7 +20,6 @@
     <div class='my=1'>XXXX</div>
 
     <% if current_game.present? %>
-      <div class='my=1'><%= @current_game.code %> -----id: (<%= @current_game.id %>)</div>
 
       <div>
         <%= turbo_frame_tag id='results' do %>
