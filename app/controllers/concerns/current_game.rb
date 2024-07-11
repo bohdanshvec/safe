@@ -22,7 +22,6 @@ module CurrentGame
       @to_6_7_tries_games = games.where(status: 1).select { |game| game.tries.ids.count == (6..7) }.count
       @to_8_10_tries_games = games.where(status: 1).select { |game| game.tries.ids.count == (8..10) }.count
       @more_than_10_tries_games = games.where(status: 1).select { |game| game.tries.ids.count > 10 }.count
-      # byebug
     end
 
     helper_method :current_game
