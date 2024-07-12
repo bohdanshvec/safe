@@ -7,8 +7,14 @@
           <li><%= nav_tab t('menu.home'), root_path, class: 'me-3 nav-link px-2', current_page: current_page %></li>
           <li><%= link_to t('menu.new_game'), start_game_path, class: 'me-4 nav-link px-2 text-white' %></li>
           <% if current_user.present? %>
-            <li><%= nav_tab t('menu.unfinished_game'), unfinished_games_users_path, class: 'me-3 nav-link px-2', current_page: current_page %></li>
-            <li><%= nav_tab t('menu.finished_game'), finished_games_users_path, class: 'me-3 nav-link px-2', current_page: current_page %></li>
+            <li class="nav-item d-inline-flex align-items-center me-4">
+              <%= nav_tab t('menu.unfinished_game'), unfinished_games_users_path, class: 'nav-link px-2', current_page: current_page %>
+              <span class="badge bg-info"><%= @unfinished_games %></span>
+            </li>
+            <li class="nav-item d-inline-flex align-items-center">
+              <%= nav_tab t('menu.finished_game'), finished_games_users_path, class: 'nav-link px-2', current_page: current_page %>
+              <span class="badge bg-info"><%= @finished_games %></span>
+            </li>
           <% end %>
         </ul>
 

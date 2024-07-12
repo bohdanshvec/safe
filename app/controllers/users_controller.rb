@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :require_no_authentication, only: %i[new create]
   before_action :require_authentication, only: %i[edit update unfinished_games finished_games]
   before_action :set_user!, only: %i[edit update]
-  before_action :calculation__statistics, only: %i[finished_games unfinished_games]
 
   def new
     @user = User.new
@@ -25,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def finished_games
+    calculation_user_statistics(current_user.games)
     @games_finished = current_user.games.where(status: 1).order updated_at: :desc
   end
 
@@ -50,8 +50,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :old_password)
   end
 
-  def calculation__statistics
-    @games_all = current_user.games
-    calculation_user_statistics(@games_all)
+
+  def calculation_user_statistics(games)
+    @all_games = games.count
+    @finished_games = games.where(status: 1).count
+    @unfinished_games = games.where(status: 0).count
+    @up_to_5_tries_games = games.where(status: 1).select { |game| game.tries.ids.count <= 5}.count
+    @to_6_7_tries_games = games.where(status: 1).select { |game| game.tries.count.between?(6, 7) }.count
+    @to_8_10_tries_games = games.where(status: 1).select { |game| game.tries.count.between?(8, 10) }.count
+    @more_than_10_tries_games = games.where(status: 1).select { |game| game.tries.ids.count > 10 }.count
   end
 end
