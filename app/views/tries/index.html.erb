@@ -22,7 +22,7 @@
     <% if current_game.present? %>
 
       <div>
-        <%= turbo_frame_tag id='results' do %>
+        <%= turbo_frame_tag id='results', data: { controller: 'sortable-tries' } do %>
           <%= render @tries %>
         <% end %>
       </div>

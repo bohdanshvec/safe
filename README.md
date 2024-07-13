@@ -37,9 +37,9 @@
 * Спробую зробити перетаскування вариантів відповідей:
 
 # Кроки:
-*
-*
-*
+* створюємо sortable_controller.js
+* додаемо гем gem 'requestjs-rails', для роботи з запитом PATCH з sortable_controller.js
+* 
 
 
 

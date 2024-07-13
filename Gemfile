@@ -9,6 +9,9 @@ gem "bootstrap"
 
 gem "sassc-rails"
 
+gem 'requestjs-rails'
+gem 'sortablejs-rails', '~> 1.15'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

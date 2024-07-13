@@ -211,6 +211,8 @@ GEM
     regexp_parser (2.8.3)
     reline (0.4.2)
       io-console (~> 0.5)
+    requestjs-rails (0.0.11)
+      railties (>= 6.1.0)
     rexml (3.2.6)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -226,6 +228,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sortablejs-rails (1.15.0)
+      rails (>= 6.0.0, < 8)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -280,8 +284,10 @@ DEPENDENCIES
   rails (~> 7.1.2)
   rails-i18n (~> 7.0, >= 7.0.9)
   redis (>= 4.0.1)
+  requestjs-rails
   sassc-rails
   selenium-webdriver
+  sortablejs-rails (~> 1.15)
   sprockets-rails
   stimulus-rails
   turbo-rails
