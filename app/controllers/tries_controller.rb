@@ -4,9 +4,9 @@ class TriesController < ApplicationController
   def index
     if params[:game_id].present?
       current_session_game(params[:game_id])
-      @tries = Try.where(game_id: params[:game_id]).order(position: :asc)
+      @tries = Try.where(game_id: params[:game_id]).order(position: :desc)
     elsif current_game.present?
-      @tries = Try.where(game_id: current_game.id).order(position: :asc)
+      @tries = Try.where(game_id: current_game.id).order(position: :desc)
     end
   end
 

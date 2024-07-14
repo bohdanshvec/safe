@@ -21,21 +21,35 @@ class UsersController < ApplicationController
 
   def unfinished_games
     calculation_user_statistics(current_user.games)
-    @games_unfinished = current_user.games.where(status: 0).order updated_at: :desc
-  end
 
-  def finished_games
     if params.present?
+      @games_unfinished = current_user.games.where(status: 0)
+  
       case
-        
+      when params[:all_games] == '1'
+        # Если выбраны все игры, ничего не фильтруем
+      when params[:less_5_tries] == '1'
+        @games_unfinished = @games_unfinished.select { |game| game.tries.ids.count <= 5}
+      when params[:tries_6_7] == '1'
+        @games_unfinished = @games_unfinished.select { |game| game.tries.count.between?(6, 7) }
+      when params[:tries_8_10] == '1'
+        @games_unfinished = @games_unfinished.select { |game| game.tries.count.between?(8, 10) }
+      when params[:more_10_tries] == '1'
+        @games_unfinished = @games_unfinished.select { |game| game.tries.ids.count > 10 }
+      else
+        # Если ни один из параметров не установлен, вернуть все игры
+        @games_unfinished = current_user.games.where(status: 0)
       end
-      end
+  
+    else
+      @games_finished = current_user.games.where(status: 0).order(updated_at: :desc)
     end
-    calculation_user_statistics(current_user.games)
-    @games_finished = current_user.games.where(status: 1).order updated_at: :desc
+
   end
 
   def finished_games
+    calculation_user_statistics(current_user.games)
+
     if params.present?
       @games_finished = current_user.games.where(status: 1)
   
@@ -43,24 +57,22 @@ class UsersController < ApplicationController
       when params[:all_games] == '1'
         # Если выбраны все игры, ничего не фильтруем
       when params[:less_5_tries] == '1'
-        @games_finished = @games_finished.where('tries < ?', 5)
+        @games_finished = @games_finished.select { |game| game.tries.ids.count <= 5}
       when params[:tries_6_7] == '1'
-        @games_finished = @games_finished.where(tries: 6..7)
+        @games_finished = @games_finished.select { |game| game.tries.count.between?(6, 7) }
       when params[:tries_8_10] == '1'
-        @games_finished = @games_finished.where(tries: 8..10)
+        @games_finished = @games_finished.select { |game| game.tries.count.between?(8, 10) }
       when params[:more_10_tries] == '1'
-        @games_finished = @games_finished.where('tries > ?', 10)
+        @games_finished = @games_finished.select { |game| game.tries.ids.count > 10 }
       else
         # Если ни один из параметров не установлен, вернуть все игры
         @games_finished = current_user.games.where(status: 1)
       end
   
-      @games_finished = @games_finished.order(updated_at: :desc)
     else
       @games_finished = current_user.games.where(status: 1).order(updated_at: :desc)
     end
-  
-    calculation_user_statistics(current_user.games)
+
   end
 
   def edit
@@ -88,11 +100,11 @@ class UsersController < ApplicationController
 
   def calculation_user_statistics(games)
     @all_games = games.count
-    @finished_games = games.where(status: 1).count
-    @unfinished_games = games.where(status: 0).count
-    @up_to_5_tries_games = games.where(status: 1).select { |game| game.tries.ids.count <= 5}.count
-    @to_6_7_tries_games = games.where(status: 1).select { |game| game.tries.count.between?(6, 7) }.count
-    @to_8_10_tries_games = games.where(status: 1).select { |game| game.tries.count.between?(8, 10) }.count
-    @more_than_10_tries_games = games.where(status: 1).select { |game| game.tries.ids.count > 10 }.count
+    @finished_games = games.where(status: 1)
+    @unfinished_games = games.where(status: 0)
+    @up_to_5_tries_games = @finished_games.select { |game| game.tries.ids.count <= 5}.count
+    @to_6_7_tries_games = @finished_games.select { |game| game.tries.count.between?(6, 7) }.count
+    @to_8_10_tries_games = @finished_games.select { |game| game.tries.count.between?(8, 10) }.count
+    @more_than_10_tries_games = @finished_games.select { |game| game.tries.ids.count > 10 }.count
   end
 end

@@ -1,5 +1,7 @@
 <% currently_at(t('menu.unfinished_game')) %>
 
+<%= render 'sort_form', form_url: unfinished_games_users_path %>
+
 <div class="row">
   <div class="col-md-7">
     <h2><%= t('.unfinished_games') %></h2>

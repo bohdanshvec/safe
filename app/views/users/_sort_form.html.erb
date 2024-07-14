@@ -1,0 +1,20 @@
+<%= form_with(url: form_url, method: 'get') do |f| %>
+
+    <%= f.check_box :all_games %>
+    <%= f.label :all_games, t('global.form.all_games') %><span class='me-3'></span>
+
+    <%= f.check_box :less_5_tries %>
+    <%= f.label :less_5_tries, t('global.form.less_5_tries') %><span class='me-3'></span>
+
+    <%= f.check_box :tries_6_7 %>
+    <%= f.label :tries_6_7, t('global.form.tries_6_7') %><span class='me-3'></span>
+
+    <%= f.check_box :tries_8_10 %>
+    <%= f.label :tries_8_10, t('global.form.tries_8_10') %><span class='me-3'></span>
+
+    <%= f.check_box :more_10_tries %>
+    <%= f.label :more_10_tries, t('global.form.more_10_tries') %><span class='me-3'></span>
+
+    <%= f.submit t('global.form.sorting'), class: "btn btn-primary" %>
+ 
+<% end %>

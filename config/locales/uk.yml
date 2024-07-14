@@ -68,6 +68,12 @@ uk:
     form:
       register: 'Зареєструватися!'
       save: 'Зберегти!'
+      all_games: 'Всі ігри'
+      less_5_tries: 'до 5 спроб'
+      tries_6_7: '6-7 спроб'
+      tries_8_10: '8-10 спроб'
+      more_10_tries: 'більше 10 спроб'
+      sorting: 'Сортувати / Всі ігри'
     statistics:
       all_statistics: 'УСЯ СТАТИСТИКА :'
       total_games_played: 'зіграно всього ігор'

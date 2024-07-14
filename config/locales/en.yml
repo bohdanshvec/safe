@@ -68,6 +68,12 @@ en:
     form:
       register: 'Register!'
       save: 'Save!'
+      all_games: 'All games'
+      less_5_tries: 'less 5 tries'
+      tries_6_7: '6-7 tries'
+      tries_8_10: '8-10 tries'
+      more_10_tries: 'more 10 tries'
+      sorting: 'Sorting / All games'
     statistics:
       all_statistics: 'ALL STATISTICS :'
       total_games_played: 'total games played'
