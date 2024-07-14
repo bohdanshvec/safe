@@ -37,7 +37,7 @@
 * Додано строку у незакінчених іграх про кількість використаних спроб
 * Зроблено перетаскування вариантів відповідей:
 
-# Кроки:
+#### Кроки:
 * створюємо sortable_controller.js, та працюємо з ним
 
 * додаемо gem 'requestjs-rails', для роботи з запитом PATCH з sortable_controller.js
@@ -52,5 +52,6 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 
 * додаємо gem 'positioning', дял запам'ятовування у БД позицій списку
 
-
+### Branch Sorting finished games
+* Створити пошук закінчених ігор по кількості спроб
 
