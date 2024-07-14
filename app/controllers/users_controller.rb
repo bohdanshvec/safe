@@ -25,8 +25,42 @@ class UsersController < ApplicationController
   end
 
   def finished_games
+    if params.present?
+      case
+        
+      end
+      end
+    end
     calculation_user_statistics(current_user.games)
     @games_finished = current_user.games.where(status: 1).order updated_at: :desc
+  end
+
+  def finished_games
+    if params.present?
+      @games_finished = current_user.games.where(status: 1)
+  
+      case
+      when params[:all_games] == '1'
+        # Если выбраны все игры, ничего не фильтруем
+      when params[:less_5_tries] == '1'
+        @games_finished = @games_finished.where('tries < ?', 5)
+      when params[:tries_6_7] == '1'
+        @games_finished = @games_finished.where(tries: 6..7)
+      when params[:tries_8_10] == '1'
+        @games_finished = @games_finished.where(tries: 8..10)
+      when params[:more_10_tries] == '1'
+        @games_finished = @games_finished.where('tries > ?', 10)
+      else
+        # Если ни один из параметров не установлен, вернуть все игры
+        @games_finished = current_user.games.where(status: 1)
+      end
+  
+      @games_finished = @games_finished.order(updated_at: :desc)
+    else
+      @games_finished = current_user.games.where(status: 1).order(updated_at: :desc)
+    end
+  
+    calculation_user_statistics(current_user.games)
   end
 
   def edit

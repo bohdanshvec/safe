@@ -9,11 +9,11 @@
           <% if current_user.present? %>
             <li class="nav-item d-inline-flex align-items-center me-4">
               <%= nav_tab t('menu.unfinished_game'), unfinished_games_users_path, class: 'nav-link px-2', current_page: current_page %>
-              <span class="badge bg-info"><%= @unfinished_games %></span>
+              <span class="badge bg-info"><%= @unfinished_games_count %></span>
             </li>
             <li class="nav-item d-inline-flex align-items-center">
               <%= nav_tab t('menu.finished_game'), finished_games_users_path, class: 'nav-link px-2', current_page: current_page %>
-              <span class="badge bg-info"><%= @finished_games %></span>
+              <span class="badge bg-info"><%= @finished_games_count %></span>
             </li>
           <% end %>
         </ul>

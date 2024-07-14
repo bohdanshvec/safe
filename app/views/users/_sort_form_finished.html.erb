@@ -1,0 +1,20 @@
+<%= form_with(url: finished_games_users_path, method: 'get') do |f| %>
+
+    <%= f.check_box :all_games %>
+    <%= f.label :all_games, 'Всі ігри' %><span class='me-3'></span>
+
+    <%= f.check_box :less_5_tries %>
+    <%= f.label :all_games, 'до 5 спроб' %><span class='me-3'></span>
+
+    <%= f.check_box :tries_6_7 %>
+    <%= f.label :all_games, '6-7 спроб' %><span class='me-3'></span>
+
+    <%= f.check_box :tries_8_10 %>
+    <%= f.label :all_games, '8-10 спроб' %><span class='me-3'></span>
+
+    <%= f.check_box :more_10_tries %>
+    <%= f.label :all_games, 'більше 10 спроб' %><span class='me-3'></span>
+
+    <%= f.submit 'Sorting', class: "btn btn-primary" %>
+ 
+<% end %>
