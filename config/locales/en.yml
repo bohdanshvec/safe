@@ -22,6 +22,10 @@ en:
     sign_up: 'Sign Up'
     log_in: 'Log In'
 
+
+  unfinished_game:
+    tries: you have already made attempts in this game
+
   tries:
     index:
       game_safe: 'Game Safe'

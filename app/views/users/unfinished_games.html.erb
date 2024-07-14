@@ -8,11 +8,14 @@
       <section class="card-text">
         <% if game.tries.count == 0 %> 
           <%= t('.text') %><br>
+        <% else %>
+          <% game.tries.order(position: :asc).each do |try| %>
+            <%= try_text(try) %><br>
+          <% end %>
+          <span class='fs-5'><%= game.tries.count %></span> - <%= t('unfinished_game.tries') %><br>
         <% end %>
-        <% game.tries.each do |try| %>
-          <%= try_text(try) %><br>
-        <% end %>
-        <%= link_to t('.continue_game'), root_path(game_id: game.id), class: "btn btn-primary" %>
+        
+        <%= link_to t('.continue_game'), root_path(game_id: game.id), class: "btn btn-primary mt-1" %>
       </section>
       <br>
     <% end %>

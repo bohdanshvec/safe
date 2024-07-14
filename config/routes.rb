@@ -12,7 +12,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :tries, only: [:index, :new, :create]
+    resources :tries, only: [:index, :new, :create] do
+      collection do
+        patch 'reorder'
+      end
+    end
 
     root 'tries#index'
   end

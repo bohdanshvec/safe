@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def unfinished_games
+    calculation_user_statistics(current_user.games)
     @games_unfinished = current_user.games.where(status: 0).order updated_at: :desc
   end
 

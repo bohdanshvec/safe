@@ -4,19 +4,20 @@ class TriesController < ApplicationController
   def index
     if params[:game_id].present?
       current_session_game(params[:game_id])
-      @tries = Try.where(game_id: params[:game_id])
+      @tries = Try.where(game_id: params[:game_id]).order(position: :asc)
     elsif current_game.present?
-      @tries = Try.where(game_id: current_game.id)
+      @tries = Try.where(game_id: current_game.id).order(position: :asc)
     end
   end
 
   def new
-    @try = Try.new
+    @try = current_game.tries.build
+    @try.position = current_game.tries.count + 1
   end
 
   def create
     @code = current_game
-    @try = @code.tries.new(try_params)
+    @try = @code.tries.build(try_params)
 
     if @try.save
 
@@ -52,10 +53,21 @@ class TriesController < ApplicationController
     redirect_to root_path
   end
 
+  def reorder
+    @try = current_game.tries.find_by(position: params[:old_position])
+    new_position = params[:new_position].to_i
+    
+    if @try.update(position: new_position)
+      head :ok
+    else
+      head :unprocessable_entity
+    end
+  end
+
   private
 
   def try_params
-    params.require(:try).permit(:result)
+    params.require(:try).permit(:result, :position)
   end
 
 end

@@ -9,6 +9,9 @@
       <%= form.label :result, t('.my_variant') %><br>
       <%= form.text_field :result, autofocus: true %>
     </div>
+
+    <%= form.hidden_field :position %>
+    
     <br>
     <div>
       <%= form.submit t('.try'), class: "btn m-3 btn-primary" %>

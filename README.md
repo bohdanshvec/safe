@@ -34,12 +34,23 @@
 
 
 ### Branch Drag and drop
-* Спробую зробити перетаскування вариантів відповідей:
+* Додано строку у незакінчених іграх про кількість використаних спроб
+* Зроблено перетаскування вариантів відповідей:
 
 # Кроки:
-* створюємо sortable_controller.js
-* додаемо гем gem 'requestjs-rails', для роботи з запитом PATCH з sortable_controller.js
-* 
+* створюємо sortable_controller.js, та працюємо з ним
+
+* додаемо gem 'requestjs-rails', для роботи з запитом PATCH з sortable_controller.js
++ ./bin/rails requestjs:install, що додасть:
+import "@rails/request.js" до app/assets/javascripts/application.js
+
+* додаємо gem 'sortablejs-rails', для сортування списку
++  bin/importmap pin sortablejs @rails/request.js, що додасть:
+// config/importmap.rb
+pin "sortablejs", to: "https://ga.jspm.io/npm:sortablejs@1.15.2/modular/sortable.esm.js"
+pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src/index.js"
+
+* додаємо gem 'positioning', дял запам'ятовування у БД позицій списку
 
 
 

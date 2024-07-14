@@ -1,5 +1,6 @@
 class Try < ApplicationRecord
   belongs_to :game
+  positioned on: :game
 
   validates :result, presence: true#, format: { with: /\A\d{4,}\z/, message: I18n.t('global.errors.only_numbers') }
   

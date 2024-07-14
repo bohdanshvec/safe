@@ -23,6 +23,9 @@ uk:
     sign_up: 'Зареєструватися'
     log_in: 'Увійти'
 
+  unfinished_game:
+    tries: 'спроб ви вже зробли в цій грі'
+
   tries:
     index:
       game_safe: 'Гра Сейф'
