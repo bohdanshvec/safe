@@ -53,15 +53,30 @@ class TriesController < ApplicationController
     redirect_to root_path
   end
 
+  # def reorder
+  #   @try = current_game.tries.find_by(position: params[:old_position])
+  #   new_position = params[:new_position].to_i
+    
+  #   if @try.update(position: new_position)
+  #     head :ok
+  #   else
+  #     head :unprocessable_entity
+  #   end
+  # end
+
   def reorder
     @try = current_game.tries.find_by(position: params[:old_position])
     new_position = params[:new_position].to_i
-    
-    if @try.update(position: new_position)
-      head :ok
+
+    if new_position > @try.position
+      # Перемещение вниз
+      @try.update(position: { after: current_game.tries.find_by(position: new_position) })
     else
-      head :unprocessable_entity
+      # Перемещение вверх
+      @try.update(position: { before: current_game.tries.find_by(position: new_position) })
     end
+
+    head :ok
   end
 
   private

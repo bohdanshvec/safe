@@ -42,7 +42,7 @@ export default class extends Controller {
 
   updatePosition() {
     this.positionTargets.forEach((position, index) => {
-      position = index + 1
+      position  = index + 1
     })
   }
 }
