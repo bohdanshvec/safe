@@ -1,13 +1,11 @@
+# frozen_string_literal: true
+
 class TriesController < ApplicationController
   include Treatment
 
   def index
-    if params[:game_id].present?
-      current_session_game(params[:game_id])
-      @tries = Try.where(game_id: params[:game_id]).order(position: :desc)
-    elsif current_game.present?
-      @tries = Try.where(game_id: current_game.id).order(position: :desc)
-    end
+    current_session_game(params[:game_id]) if params[:game_id].present?
+    @tries = current_game.tries.order(position: :asc) if current_game.present?
   end
 
   def new
@@ -45,38 +43,23 @@ class TriesController < ApplicationController
   end
 
   def start_game
-    code_game = (0..9).to_a.shuffle.pop(4).join(", ")
+    code_game = (0..9).to_a.shuffle.pop(4).join(', ')
 
-    current_user.present? ? @game = current_user.games.create(code: code_game) : @game = Game.create(code: code_game)
-    
+    @game = current_user.present? ? current_user.games.create(code: code_game) : Game.create(code: code_game)
+
     current_session_game(@game.id)
     redirect_to root_path
   end
-
-  # def reorder
-  #   @try = current_game.tries.find_by(position: params[:old_position])
-  #   new_position = params[:new_position].to_i
-    
-  #   if @try.update(position: new_position)
-  #     head :ok
-  #   else
-  #     head :unprocessable_entity
-  #   end
-  # end
 
   def reorder
     @try = current_game.tries.find_by(position: params[:old_position])
     new_position = params[:new_position].to_i
 
-    if new_position > @try.position
-      # Перемещение вниз
-      @try.update(position: { after: current_game.tries.find_by(position: new_position) })
+    if @try.update(position: new_position)
+      head :ok
     else
-      # Перемещение вверх
-      @try.update(position: { before: current_game.tries.find_by(position: new_position) })
+      head :unprocessable_entity
     end
-
-    head :ok
   end
 
   private
@@ -84,5 +67,4 @@ class TriesController < ApplicationController
   def try_params
     params.require(:try).permit(:result, :position)
   end
-
 end

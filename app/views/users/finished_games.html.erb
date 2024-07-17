@@ -10,7 +10,7 @@
       <section class="card-text">
         <h5 style='color: blue'><%= game.code.gsub(/[\s,]/, '') %> : <%= t('.code') %></h5>
 
-        <% game.tries.each do |try| %>
+        <% game.tries.order(created_at: :asc).each do |try| %>
           <%= try_text(try) %><br>
         <% end %>
 

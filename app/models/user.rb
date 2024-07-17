@@ -1,29 +1,26 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :old_password
+
   has_many :games
-  
-  attr_accessor :old_password
 
   has_secure_password validations: false
 
   validate :password_presence
   validate :correct_old_password, on: :update
   validates :password, confirmation: true, allow_blank: true, length: { minimum: 4 }
-  
+
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validates :name, presence: true
 
   def remember_me
     self.remember_token = SecureRandom.urlsafe_base64
-    # rubocop:disable Rails/SkipsModelValidations
     update_column :remember_token_digest, digest(remember_token)
-    # rubocop:enable Rails/SkipsModelValidations
   end
 
   def forget_me
-    # rubocop:disable Rails/SkipsModelValidations
     update_column :remember_token_digest, nil
-    # rubocop:enable Rails/SkipsModelValidations
     self.remember_token = nil
   end
 

@@ -1,5 +1,6 @@
-module ApplicationHelper
+# frozen_string_literal: true
 
+module ApplicationHelper
   def nav_tab(title, url, options = {})
     current_page = options.delete :current_page
 
@@ -18,5 +19,4 @@ module ApplicationHelper
     render partial: 'shared/menu', locals: { current_page: }
     # задали локальную переменную, которая видна на всей странице
   end
-  
 end

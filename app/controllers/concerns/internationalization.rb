@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Internationalization
   extend ActiveSupport::Concern
 
@@ -6,34 +8,34 @@ module Internationalization
     around_action :switch_licale
 
     private
-  
+
     def switch_licale(&action)
       locale = locale_from_url || locale_from_headers || I18n.default_locale
       response.set_header 'Content-Language', locale
       I18n.with_locale locale, &action
     end
-  
+
     def locale_from_url
       locale = params[:locale]
-  
+
       locale if I18n.available_locales.map(&:to_s).include?(locale)
     end
-  
+
     # Adapted from https://github.com/rack/rack-contrib/blob/master/lib/rack/contrib/locale.rb
     def locale_from_headers
       header = request.env['HTTP_ACCEPT_LANGUAGE']
-  
+
       return if header.nil?
-  
+
       locales = parse_header header
-  
+
       return if locales.empty?
-  
+
       return locales.last unless I18n.enforce_available_locales
-  
+
       detect_from_available locales
     end
-  
+
     def parse_header(header)
       # rubocop:disable Style/MultilineBlockChain
       header.gsub(/\s+/, '').split(',').map do |language_tag|
@@ -47,16 +49,16 @@ module Internationalization
       end.map(&:first)
       # rubocop:enable Style/MultilineBlockChain
     end
-  
+
     def detect_from_available(locales)
       locales.reverse.find { |l| I18n.available_locales.any? { |al| match?(al, l) } }
       I18n.available_locales.find { |al| match?(al, locale) } if locale
     end
-  
+
     def match?(str1, str2)
       str1.to_s.casecmp(str2.to_s).zero?
     end
-  
+
     def default_url_options
       { locale: I18n.locale }
     end

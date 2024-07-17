@@ -10,17 +10,19 @@ export default class extends Controller {
       onEnd: async (e) => {
         try {
           this.disable()
-          const resp = await patch('/tries/reorder', {
+
+          const resp = await patch("/tries/reorder", {
             body: JSON.stringify({
-              'new_position': e.newIndex + 1,
-              'old_position': e.oldIndex + 1,
-            }),
+              "new_position": e.newIndex + 1,
+              "old_position": e.oldIndex + 1,
+            })
           })
 
-          if (!resp.ok) {
+          if(!resp.ok) {
             throw new Error(`Cannot reorder: ${resp.statusCode}`)
           }
-          this.updatePosition()
+
+          this.updatePositions()
         } catch(e) {
           console.error(e)
         } finally {
@@ -40,9 +42,10 @@ export default class extends Controller {
     this.sortable.el.classList.remove('opacity-50')
   }
 
-  updatePosition() {
+  updatePositions() {
     this.positionTargets.forEach((position, index) => {
-      position  = index + 1
+      position = index + 1
     })
   }
 }
+

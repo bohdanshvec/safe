@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module CurrentGame
   extend ActiveSupport::Concern
-  
-  included do
 
+  included do
     private
 
     def current_session_game(game_id)
@@ -15,6 +16,5 @@ module CurrentGame
     end
 
     helper_method :current_game
-
   end
 end

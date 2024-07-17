@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddUniqueIndexToTries < ActiveRecord::Migration[7.1]
   def change
-    add_index :tries, [:game_id, :position], unique: true
+    add_index :tries, %i[game_id position], unique: true
   end
 end

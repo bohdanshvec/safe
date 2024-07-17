@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Game < ApplicationRecord
   enum status: { in_progress: 0, completed: 1 }
   has_many :tries, dependent: :destroy

@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 module Authentication
   extend ActiveSupport::Concern
-  
-  included do
 
+  included do
     private
-  
+
     def current_user
       user = session[:user_id].present? ? user_from_session : user_from_token
 
@@ -24,7 +25,7 @@ module Authentication
       sign_in(user)
       user
     end
-  
+
     def user_signed_in?
       current_user.present?
     end
@@ -40,11 +41,13 @@ module Authentication
 
     def require_no_authentication
       return unless user_signed_in?
+
       redirect_to root_path
     end
 
     def require_authentication
       return if user_signed_in?
+
       redirect_to root_path
     end
 
@@ -59,7 +62,7 @@ module Authentication
       cookies.delete :remember_token
       cookies.delete :user_id
     end
-  
+
     helper_method :current_user, :user_signed_in?
   end
 end
