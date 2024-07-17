@@ -64,4 +64,5 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 #### Add time in finished/unfinished games 
 
 ### Branch Opacity sort form
-* Відтворити позначення при виборі запиту сортування
+* Відтворено прозоре позначення вибору при запиті сортування інструментами RAILS
+* У контроллері Users дублюючийся код методів unfinished_games та finished_games винесено в метод statistics_processing(status)

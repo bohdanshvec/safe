@@ -6,7 +6,7 @@
   <div class="col-md-7">
     <h2><%= t('.finished_games') %></h2>
 
-    <% @games_finished.sort_by{|game| game.updated_at}.reverse.each do |game| %>
+    <% @games_un_or_finished.sort_by{|game| game.updated_at}.reverse.each do |game| %>
       <section class="card-text">
         <h5 style='color: blue'><%= game.code.gsub(/[\s,]/, '') %> : <%= t('.code') %>, <%= t('.finished') %>: <%= game.updated_at.strftime("%d-%m-%Y %H:%M") %></h5>
 

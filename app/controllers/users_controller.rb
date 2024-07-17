@@ -21,58 +21,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def unfinished_games
-    calculation_user_statistics(current_user.games)
-
-    if params.present?
-      @games_unfinished = current_user.games.where(status: 0)
-
-      if params[:all_games] == '1'
-        # Если выбраны все игры, ничего не фильтруем
-      elsif params[:less_5_tries] == '1'
-        @games_unfinished = @games_unfinished.select { |game| game.tries.ids.count <= 5 }
-      elsif params[:tries_6_7] == '1'
-        @games_unfinished = @games_unfinished.select { |game| game.tries.count.between?(6, 7) }
-      elsif params[:tries_8_10] == '1'
-        @games_unfinished = @games_unfinished.select { |game| game.tries.count.between?(8, 10) }
-      elsif params[:more_10_tries] == '1'
-        @games_unfinished = @games_unfinished.select { |game| game.tries.ids.count > 10 }
-      else
-        # Если ни один из параметров не установлен, вернуть все игры
-        @games_unfinished = current_user.games.where(status: 0)
-      end
-
-    else
-      @games_finished = current_user.games.where(status: 0).order(updated_at: :desc)
-    end
-  end
-
-  def finished_games
-    calculation_user_statistics(current_user.games)
-
-    if params.present?
-      @games_finished = current_user.games.where(status: 1)
-
-      if params[:all_games] == '1'
-        # Если выбраны все игры, ничего не фильтруем
-      elsif params[:less_5_tries] == '1'
-        @games_finished = @games_finished.select { |game| game.tries.ids.count <= 5 }
-      elsif params[:tries_6_7] == '1'
-        @games_finished = @games_finished.select { |game| game.tries.count.between?(6, 7) }
-      elsif params[:tries_8_10] == '1'
-        @games_finished = @games_finished.select { |game| game.tries.count.between?(8, 10) }
-      elsif params[:more_10_tries] == '1'
-        @games_finished = @games_finished.select { |game| game.tries.ids.count > 10 }
-      else
-        # Если ни один из параметров не установлен, вернуть все игры
-        @games_finished = current_user.games.where(status: 1)
-      end
-
-    else
-      @games_finished = current_user.games.where(status: 1).order(updated_at: :desc)
-    end
-  end
-
   def edit; end
 
   def update
@@ -82,6 +30,14 @@ class UsersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def unfinished_games
+    statistics_processing(0)
+  end
+
+  def finished_games
+    statistics_processing(1)
   end
 
   private
@@ -102,5 +58,37 @@ class UsersController < ApplicationController
     @to_6_7_tries_games = @finished_games.select { |game| game.tries.count.between?(6, 7) }.count
     @to_8_10_tries_games = @finished_games.select { |game| game.tries.count.between?(8, 10) }.count
     @more_than_10_tries_games = @finished_games.select { |game| game.tries.ids.count > 10 }.count
+  end
+
+  def statistics_processing(status)
+    calculation_user_statistics(current_user.games)
+
+    if params.present?
+      @opacity = 'opacity-100'
+      @games_un_or_finished = current_user.games.where(status: status)
+
+      case params[:filter]
+        when 'all_games_opasity'
+          @all_games_opasity = 'opacity-50'
+        when 'less_5_tries'
+          @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.ids.count <= 5 }
+          @less_5_tries = 'opacity-50'
+        when 'tries_6_7'
+          @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.count.between?(6, 7) }
+          @tries_6_7 = 'opacity-50'
+        when 'tries_8_10'
+          @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.count.between?(8, 10) }
+          @tries_8_10 = 'opacity-50'
+        when 'more_10_tries'
+          @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.ids.count > 10 }
+          @more_10_tries = 'opacity-50'
+        else
+          @games_un_or_finished = current_user.games.where(status: status)
+          @all_games_opasity = 'opacity-50'
+      end
+
+    else
+      @games_un_or_finished = current_user.games.where(status: status).order(updated_at: :desc)
+    end
   end
 end
