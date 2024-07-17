@@ -61,3 +61,7 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 * Виправлено баг зі збереженням в БД позицій спроб при переміщенні
 * При відображенні спроб в грі та в незакінчених играх сортуємо їх за (position: :asc); в закінчених іграх сортуємо спробі за (created_at: :asc).
 
+#### Add time in finished/unfinished games 
+
+### Branch Opacity sort form
+* Відтворити позначення при виборі запиту сортування
