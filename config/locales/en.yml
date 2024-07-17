@@ -60,9 +60,11 @@ en:
       unfinished_games: 'UNFINISHED GAMES :'
       text: 'The game has started, but no variants have been entered'
       continue_game: 'Continue  game'
+      played: 'played'
     finished_games:
       finished_games: 'FINISHED GAMES :'
       code: 'CODE'
+      finished: 'finished'
 
   global:
     form:

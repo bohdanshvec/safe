@@ -60,9 +60,11 @@ uk:
       unfinished_games: 'НЕЗАКІНЧЕНІ ІГРИ :'
       text: 'Гру розпочато, але не введено жодного варіанту'
       continue_game: 'Продовжити гру'
+      played: 'грали'
     finished_games:
       finished_games: 'ЗАКІНЧЕНІ ІГРИ :'
       code: 'КОД'
+      finished: 'закінчена'
 
   global:
     form:

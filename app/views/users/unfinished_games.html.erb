@@ -6,7 +6,7 @@
   <div class="col-md-7">
     <h2><%= t('.unfinished_games') %></h2>
 
-    <% @games_unfinished.each do |game| %>
+    <% @games_unfinished.sort_by{|game| game.updated_at}.reverse.each do |game| %>
       <section class="card-text">
         <% if game.tries.count == 0 %> 
           <%= t('.text') %><br>
@@ -17,7 +17,7 @@
           <span class='fs-5'><%= game.tries.count %></span> - <%= t('unfinished_game.tries') %><br>
         <% end %>
         
-        <%= link_to t('.continue_game'), root_path(game_id: game.id), class: "btn btn-primary mt-1" %>
+        <%= link_to t('.continue_game'), root_path(game_id: game.id), class: "btn btn-primary mt-1" %> <span style='color: green' class='fs-4'><%= t('.played') %>: <%= game.updated_at.strftime("%d-%m-%Y %H:%M") %></span>
       </section>
       <br>
     <% end %>
