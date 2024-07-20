@@ -1,28 +1,27 @@
 <%= form_with(url: form_url, method: 'get') do |f| %>
-
-  <div class='<%= @opacity %>'>
-    <span class='<%= @all_games_opasity %>'>
-      <%= f.radio_button :filter, :all_games_opasity %>
+  <div data-controller="opacity">
+    <span data-opacity-target="all_games_opasity">
+      <%= f.radio_button :filter, :all_games_opasity, data: { opacity_target: 'option' } %>
       <%= f.label :all_games_opasity, t('global.form.all_games') %><span class='me-3'></span>
     </span>
 
-    <span class='<%= @less_5_tries %>'>
-      <%= f.radio_button :filter, :less_5_tries %>
+    <span data-opacity-target="less_5_tries">
+      <%= f.radio_button :filter, :less_5_tries, data: { opacity_target: 'option' } %>
       <%= f.label :less_5_tries, t('global.form.less_5_tries') %><span class='me-3'></span>
     </span>
 
-    <span class='<%= @tries_6_7 %>'>
-      <%= f.radio_button :filter, :tries_6_7 %>
+    <span data-opacity-target="tries_6_7">
+      <%= f.radio_button :filter, :tries_6_7, data: { opacity_target: 'option' } %>
       <%= f.label :tries_6_7, t('global.form.tries_6_7') %><span class='me-3'></span>
     </span>
 
-    <span class='<%= @tries_8_10 %>'>
-      <%= f.radio_button :filter, :tries_8_10 %>
+    <span data-opacity-target="tries_8_10">
+      <%= f.radio_button :filter, :tries_8_10, data: { opacity_target: 'option' } %>
       <%= f.label :tries_8_10, t('global.form.tries_8_10') %><span class='me-3'></span>
     </span>
 
-    <span class='<%= @more_10_tries %>'>
-      <%= f.radio_button :filter, :more_10_tries %>
+    <span data-opacity-target="more_10_tries">
+      <%= f.radio_button :filter, :more_10_tries, data: { opacity_target: 'option' } %>
       <%= f.label :more_10_tries, t('global.form.more_10_tries') %><span class='me-3'></span>
     </span>
     

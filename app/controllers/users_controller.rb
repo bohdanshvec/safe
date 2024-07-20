@@ -64,27 +64,28 @@ class UsersController < ApplicationController
     calculation_user_statistics(current_user.games)
 
     if params.present?
-      @opacity = 'opacity-100'
+      @selected_filter = params[:filter]
+      # Логика фильтрации и обновления данных
+    else
+      @selected_filter = nil # или установить значение по умолчанию
+      # Логика по умолчанию при первой загрузке страницы
+    end
+    
+    if params.present?
       @games_un_or_finished = current_user.games.where(status: status)
 
       case params[:filter]
         when 'all_games_opasity'
-          @all_games_opasity = 'opacity-50'
         when 'less_5_tries'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.ids.count <= 5 }
-          @less_5_tries = 'opacity-50'
         when 'tries_6_7'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.count.between?(6, 7) }
-          @tries_6_7 = 'opacity-50'
         when 'tries_8_10'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.count.between?(8, 10) }
-          @tries_8_10 = 'opacity-50'
         when 'more_10_tries'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.ids.count > 10 }
-          @more_10_tries = 'opacity-50'
         else
           @games_un_or_finished = current_user.games.where(status: status)
-          @all_games_opasity = 'opacity-50'
       end
 
     else
