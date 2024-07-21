@@ -1,30 +1,30 @@
 <%= form_with(url: form_url, method: 'get') do |f| %>
   <div data-controller="opacity">
-    <span data-opacity-target="all_games_opasity">
-      <%= f.radio_button :filter, :all_games_opasity, data: { opacity_target: 'option' } %>
+    <span data-opacity-target='allGames'>
+      <%= f.radio_button :filter, :allGames, data: { action: 'opacity#allGames'} %>
       <%= f.label :all_games_opasity, t('global.form.all_games') %><span class='me-3'></span>
     </span>
 
-    <span data-opacity-target="less_5_tries">
-      <%= f.radio_button :filter, :less_5_tries, data: { opacity_target: 'option' } %>
+    <span data-opacity-target="less5Tries">
+      <%= f.radio_button :filter, :less5Tries, data: { action: 'opacity#less5Tries'} %>
       <%= f.label :less_5_tries, t('global.form.less_5_tries') %><span class='me-3'></span>
     </span>
 
-    <span data-opacity-target="tries_6_7">
-      <%= f.radio_button :filter, :tries_6_7, data: { opacity_target: 'option' } %>
+    <span data-opacity-target="tries67">
+      <%= f.radio_button :filter, :tries67, data: { action: 'opacity#tries67'} %>
       <%= f.label :tries_6_7, t('global.form.tries_6_7') %><span class='me-3'></span>
     </span>
 
-    <span data-opacity-target="tries_8_10">
-      <%= f.radio_button :filter, :tries_8_10, data: { opacity_target: 'option' } %>
+    <span data-opacity-target="tries810">
+      <%= f.radio_button :filter, :tries810, data: { action: 'opacity#tries810'} %>
       <%= f.label :tries_8_10, t('global.form.tries_8_10') %><span class='me-3'></span>
     </span>
 
-    <span data-opacity-target="more_10_tries">
-      <%= f.radio_button :filter, :more_10_tries, data: { opacity_target: 'option' } %>
+    <span data-opacity-target="more10Tries">
+      <%= f.radio_button :filter, :more10Tries, data: { action: 'opacity#more10Tries'} %>
       <%= f.label :more_10_tries, t('global.form.more_10_tries') %><span class='me-3'></span>
     </span>
     
-    <%= f.submit t('global.form.sorting'), class: "btn btn-primary" %>
+    <%= f.submit t('global.form.sorting'), class: "btn btn-primary", data: { action: 'opacity#submitForm' } %>
   </div>
 <% end %>

@@ -64,25 +64,17 @@ class UsersController < ApplicationController
     calculation_user_statistics(current_user.games)
 
     if params.present?
-      @selected_filter = params[:filter]
-      # Логика фильтрации и обновления данных
-    else
-      @selected_filter = nil # или установить значение по умолчанию
-      # Логика по умолчанию при первой загрузке страницы
-    end
-    
-    if params.present?
       @games_un_or_finished = current_user.games.where(status: status)
 
       case params[:filter]
-        when 'all_games_opasity'
-        when 'less_5_tries'
+        when 'allGames'
+        when 'less5Tries'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.ids.count <= 5 }
-        when 'tries_6_7'
+        when 'tries67'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.count.between?(6, 7) }
-        when 'tries_8_10'
+        when 'tries810'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.count.between?(8, 10) }
-        when 'more_10_tries'
+        when 'more10Tries'
           @games_un_or_finished = @games_un_or_finished.select { |game| game.tries.ids.count > 10 }
         else
           @games_un_or_finished = current_user.games.where(status: status)

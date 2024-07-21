@@ -1,37 +1,179 @@
-// opacity_controller.js
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["option"];
-  static values = { selectedFilter: String };
+
+  static targets = [ 'allGames', 'less5Tries', 'tries67', 'tries810', 'more10Tries' ];
 
   connect() {
-    // Применить прозрачность после загрузки страницы
-    this.applyOpacity();
+    this.allTargets = this.allGamesTargets.concat(
+      this.less5TriesTargets,
+      this.tries67Targets,
+      this.tries810Targets,
+      this.more10TriesTargets
+    );
+    this.allTargetsOpacity100(this.allTargets) // Задаём всем элементам opacity=100
+    // this.loadFilter(); // Считываем данные из localStorage
   }
 
-  applyOpacity() {
-    const selectedFilter = this.selectedFilterValue;
-
-    // Сбросить прозрачность для всех элементов
-    this.optionTargets.forEach(option => {
-      option.closest('span').classList.remove("opacity-50");
+  allTargetsOpacity100(targets) {
+    const savedFilter = localStorage.getItem('filter');
+    targets.forEach(target => {
+      target.classList.add("opacity-100");
+        if (target.querySelector('input[type="radio"]').value === savedFilter) {
+          // const radioButton = this.element.querySelector(`input[type="radio"][value="${savedFilter}"]`); //  Определяем кнопку
+          target.classList.remove("opacity-100");
+          target.classList.add("opacity-50");
+          // radioButton.checked = true; // Задаём флаг "включено" на кнопке
+        }
     });
-
-    // Применить прозрачность к выбранному элементу, если выбран
-    if (selectedFilter) {
-      const selectedOption = this.optionTargets.find(option => option.value === selectedFilter);
-      if (selectedOption) {
-        selectedOption.closest('span').classList.add("opacity-50");
-      }
-    }
+    // if (savedFilter == null) {
+    //   this.allGamesTarget.classList.remove('opacity-100')
+    //   this.allGamesTarget.classList.add('opacity-50')
+    // };
+    localStorage.removeItem('filter');
   }
 
-  // Слушать изменения фильтра и обновлять прозрачность
-  selectedFilterValueChanged() {
-    this.applyOpacity();
+  submitForm(event) {
+    event.preventDefault(); // Останавливает отправку формы
+    // console.log('submitForm called'); // Сообщение для проверки вызова метода
+
+    const form = event.target.closest('form'); // Получаем форму
+    if (form) {
+      // console.log('Form found'); // Сообщение для проверки нахождения формы
+      const formData = new FormData(form);
+      formData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+        if (key === 'filter') {
+          localStorage.setItem('filter', value); // Сохраняем значение filter в localStorage
+          this.filterFound = true; 
+        } 
+      });
+      // Если просто нажать на отправку формы без заданых параметров, передастся параметр в ocalStorage - 'allGames'
+      if (!this.filterFound) {
+        // console.log('NULL');
+        localStorage.setItem('filter', 'allGames');
+      }
+    } else {
+      console.log('Form not found'); // Сообщение если форма не найдена
+    }
+
+    // Здесь можно добавить логику для обработки данных формы
+    // и, если нужно, отправить форму вручную
+    form.submit(); // Продолжаем выполнение отправки формы
+  }
+
+  // loadFilter() {
+  //   const savedFilter = localStorage.getItem('filter');
+  //   if (savedFilter) {
+  //     console.log(`Loaded filter: ${savedFilter}`); // Сообщение для проверки загрузки значения
+  //     const radioButton = this.element.querySelector(`input[type="radio"][value="${savedFilter}"]`);
+  //     if (radioButton) {
+  //       radioButton.checked = true; // Устанавливаем радио-кнопку в состояние checked
+  //     }
+  //   }
+  // }
+
+  allGames() {
+    console.log('All');
+    this.allTargetsOpacity100(this.allTargets)
+    this.allGamesTarget.classList.remove("opacity-100")
+    this.allGamesTarget.classList.add("opacity-50")
+  }
+  less5Tries() {
+    console.log('less5Tries');
+    this.allTargetsOpacity100(this.allTargets)
+    this.less5TriesTarget.classList.remove("opacity-100")
+    this.less5TriesTarget.classList.add("opacity-50")
+  }
+  tries67() {
+    console.log('tries67');
+    this.allTargetsOpacity100(this.allTargets)
+    this.tries67Target.classList.remove("opacity-100")
+    this.tries67Target.classList.add("opacity-50")
+  }
+  tries810() {
+    console.log('tries810');
+    this.allTargetsOpacity100(this.allTargets)
+    this.tries810Target.classList.remove("opacity-100")
+    this.tries810Target.classList.add("opacity-50")
+  }
+  more10Tries() {
+    console.log('more10Tries');
+    this.allTargetsOpacity100(this.allTargets)
+    this.more10TriesTarget.classList.remove("opacity-100")
+    this.more10TriesTarget.classList.add("opacity-50")
   }
 }
+
+
+//////////////////////////////////////////////////////////////////
+
+
+//   static targets = ["allGames", "less5Tries", "tries67", "tries810", "more10Tries"];
+
+//   connect() {
+//     this.allTargets = this.targets.findAll("allGames").concat(
+//       this.targets.findAll("less5Tries"),
+//       this.targets.findAll("tries67"),
+//       this.targets.findAll("tries810"),
+//       this.targets.findAll("more10Tries")
+//     );
+
+//     this.allTargets.forEach(target => {
+//       console.log(target.querySelector('input[type="radio"]'))
+//       // target.querySelector('input[type="radio"]').addEventListener('change', this.handleChange.bind(this));
+//     });
+//   }
+
+//   // Метод для обработки изменений
+//   handleChange(event) {
+//     const target = event.currentTarget;
+//     // const value = target.querySelector('input[type="radio"]').value;
+    
+//     console.log(`Цель: ${target.dataset.opacityTarget}`);
+//   }
+
+
+// }
+
+
+
+
+
+
+
+
+
+//   static targets = ["option"];
+//   static values = { selectedFilter: String };
+
+//   connect() {
+//     // Применить прозрачность после загрузки страницы
+//     this.applyOpacity();
+//   }
+
+//   applyOpacity() {
+//     const selectedFilter = this.selectedFilterValue;
+
+//     // Сбросить прозрачность для всех элементов
+//     this.optionTargets.forEach(option => {
+//       option.closest('span').classList.remove("opacity-50");
+//     });
+
+//     // Применить прозрачность к выбранному элементу, если выбран
+//     if (selectedFilter) {
+//       const selectedOption = this.optionTargets.find(option => option.value === selectedFilter);
+//       if (selectedOption) {
+//         selectedOption.closest('span').classList.add("opacity-50");
+//       }
+//     }
+//   }
+
+//   // Слушать изменения фильтра и обновлять прозрачность
+//   selectedFilterValueChanged() {
+//     this.applyOpacity();
+//   }
+// }
 
 
 
