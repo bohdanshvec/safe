@@ -69,3 +69,6 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 
 ### Branch Using JS opasity sort form
 * Відтворено прозоре позначення вибору при запиті сортування інструментами JS
+
+### Branch Active Jobs
+* Спробую створити джоб для щодобового видалення игор, які не належать юзерам
