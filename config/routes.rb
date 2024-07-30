@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  
+  get 'run_cleanup', to: 'cleanup#run'
+
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     get '/start_game', to: 'tries#start_game', as: 'start_game'
 

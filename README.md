@@ -72,4 +72,10 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 
 ### Branch Deploy test job
 * Гілка для відтворення джобу для щоденного видалення ігор без юзерів. Робота з Cron через EasyCron.
-* для відображення прапора змінено на background-image: url(asset_path('flags_ua.png')); 
+* для відображення прапора змінено на background-image: url(asset_path('flags_ua.png'));
+#### Кроки по впровадженню джоба з cron:
+* додано в шляхи: post 'run_cleanup', to: 'cleanup#run'
+* створено контроллер: cleanup_controller.rb
+* створено джобу: cleanup_job.rb
+* створено cron_job на сайті cron-job.org
+* оновлено шлях розгортання на Render.com на гілку deploy_test_job
