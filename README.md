@@ -78,4 +78,5 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 * створено контроллер: cleanup_controller.rb
 * створено джобу: cleanup_job.rb
 * створено cron_job на сайті cron-job.org
-* оновлено шлях розгортання на Render.com на гілку deploy_test_job
+* оновлено шлях розгортання на Render.com на гілку deploy_test_job (навчальні цілі)
+* додано строку <%= Game.where(user_id: nil).count %> на индекс для відслідковування щоденної роботи cron завдань (навчальні цілі)
