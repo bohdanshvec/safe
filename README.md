@@ -69,3 +69,7 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.9/src
 
 ### Branch Using JS opasity sort form - (навчальні цілі, не змерджено)
 * Відтворено прозоре позначення вибору при запиті сортування інструментами JS
+
+### Branch Deploy test job
+* Гілка для відтворення джобу для щоденного видалення ігор без юзерів. Робота з Cron через EasyCron.
+* для відображення прапора змінено на background-image: url(asset_path('flags_ua.png')); 

@@ -34,7 +34,9 @@
   width: 16px;
   height: 16px;
   display: inline-block;
-  background: url('/assets/flags_ua.png') no-repeat;
+  // background: url('../assets/flags_ua.png') no-repeat;
+  // background: url('flags_ua.png') no-repeat;
+  background-image: url(asset_path('flags_ua.png'));
   overflow: hidden;
   text-indent: -9999px;
   text-align: left;
